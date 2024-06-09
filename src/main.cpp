@@ -1,18 +1,35 @@
 #include <Arduino.h>
+#include <Wire.h>
+#include <LiquidCrystal_I2C.h>
+
+// consts
+
+// vars
+
+// objects
+
+LiquidCrystal_I2C display(0X27, 16, 2);
 
 // put function declarations here:
-int myFunction(int, int);
+void InitDisplay();
 
-void setup() {
+void setup()
+{
   // put your setup code here, to run once:
-  int result = myFunction(2, 3);
+  InitDisplay();
+  display.setCursor(0, 0);
+  display.print("Hola Gorda");
 }
 
-void loop() {
+void loop()
+{
   // put your main code here, to run repeatedly:
 }
 
 // put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+void InitDisplay()
+{
+  display.init();
+  display.clear();
+  display.backlight();
 }
